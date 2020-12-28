@@ -1,3 +1,5 @@
+[ -f ~/dotfiles/zsh/alias.zsh ] source ~/dotfiles/zsh/alias.zsh
+
 # PATH setting
 export PATH=/opt/homebrew/bin:$PATH
 
