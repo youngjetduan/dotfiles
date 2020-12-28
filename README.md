@@ -10,17 +10,17 @@
    
    1. 克隆完整仓库，之后切换至mac分支
    
-   ```shell
-   git clone git@github.com:keyunj/dotfiles.git
-   cd dotfiles
-   git checkout mac
-   ```
+      ```shell
+      git clone git@github.com:keyunj/dotfiles.git
+      cd dotfiles
+      git checkout mac
+      ```
    
    2. 仅克隆mac分支
    
-   ```shell
-   git clone -b mac git@github.com:keyunj/dotfiles.git
-   ```
+      ```sh
+      git clone -b mac git@github.com:keyunj/dotfiles.git
+      ```
    
 2. 运行配置脚本
 
