@@ -1,26 +1,17 @@
-alias ca='conda activate'
-alias ci='conda install'
-alias cs='conda search'
-alias cl='conda list'
-alias cda='conda deactivate'
+# alias settings
+alias abrew='/opt/homebrew/bin/brew'
+alias xbrew='arch -x86_64 /usr/local/bin/brew'
 
-alias tb='tensorboard --logdir'
-
-alias tn='tmux new -s'
-alias ta='tmux a -t'
-alias tk='tmux kill-session -t'
-alias tl='tmux ls'
-
-alias ss='screen -S'
-alias sr='screen -R'
-alias sd='screen -d'
-alias sl='screen -ls'
-alias sc='echo $STY'
+alias typora='open -a typora'
 
 alias ll='ls -alF'
 alias la='ls -a'
 
-alias ..='cd ..'
-alias ...='cd ../..'
+alias ss='screen -S'
+alias sr='screen -R'
+alias sd='screen -d'
+alias sc='echo $STY' 
+alias sl='screen -ls'
+
 alias e='exit'
 alias cls='clear'
