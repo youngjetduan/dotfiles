@@ -10,6 +10,15 @@ do
 done
 ln -s $BASE_DIR/zsh/zshrc $HOME/.zshrc
 
+#建立tmux配置链接
+echo "配置tmux..."
+if [ -L $HOME/.tmux.conf ];then
+    unlink $HOME/.tmux.conf
+elif [ -f $HOME/.tmux.conf ];then
+    mv $HOME/.tmux.conf $HOME/.tmux.conf.bak
+fi
+ln -s $BASE_DIR/tmux/tmux.conf $HOME/.tmux.conf
+
 #建立gitconfig链接
 echo "配置Git..."
 if [ -L $HOME/.gitconfig ];then
@@ -19,4 +28,21 @@ elif [ -f $HOME/.gitconfig ];then
 fi
 ln -s $BASE_DIR/git/gitconfig $HOME/.gitconfig
 
+#建立conda配置链接
+echo "配置conda"
+if [ -L $HOME/.condarc ];then
+    unlink $HOME/.condarc
+elif [ -f $HOME/.condarc ];then
+    mv $HOME/.condarc $HOME/.condarc.bak
+fi
+ln -s $BASE_DIR/conda/condarc $HOME/.condarc
+
+#建立p10k配置链接
+echo "配置p10k..."
+if [ -L $HOME/.p10k.zsh ];then
+    unlink $HOME/.p10k.zsh
+elif [ -f $HOME/.p10k.zsh ];then
+    mv $HOME/.p10k.zsh $HOME/.p10k.zsh.bak
+fi
+ln -s $BASE_DIR/zsh/p10k.zsh $HOME/.p10k.zsh
 echo "Config completed, just enjoy!"
