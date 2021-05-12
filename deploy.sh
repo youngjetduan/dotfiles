@@ -1,3 +1,4 @@
+#! /bin/sh
 BASE_DIR=`pwd`
 TODAY=`date +%Y%m%d%H%M%S`
 
