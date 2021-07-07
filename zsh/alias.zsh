@@ -1,7 +1,10 @@
-alias ca='conda activate'
 alias ci='conda install'
 alias cs='conda search'
 alias cl='conda list'
+alias mi='mamba install'
+alias ms='mamba search'
+alias ml='mamba list'
+alias ca='conda activate'
 alias cda='conda deactivate'
 
 alias tb='tensorboard --logdir'
