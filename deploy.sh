@@ -36,7 +36,11 @@ if [ -L $HOME/.condarc ];then
 elif [ -f $HOME/.condarc ];then
     mv $HOME/.condarc $HOME/.condarc.bak
 fi
-ln -s $BASE_DIR/conda/condarc $HOME/.condarc
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+    ln -s $BASE_DIR/conda/condarc_darwin $HOME/.condarc
+elif [[ "$OSTYPE" =~ ^linux ]]; then
+    ln -s $BASE_DIR/conda/condarc_linux $HOME/.condarc
+fi
 
 #建立p10k配置链接
 echo "配置p10k..."

@@ -55,9 +55,24 @@ zinit light romkatv/powerlevel10k
 # system path setting
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     export PATH=/opt/homebrew/bin:$PATH
+
+	# >>> conda initialize >>>
+	# !! Contents within this block are managed by 'conda init' !!
+	__conda_setup="$('/Users/dyj/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+		eval "$__conda_setup"
+	else
+		if [ -f "/Users/dyj/mambaforge/etc/profile.d/conda.sh" ]; then
+			. "/Users/dyj/mambaforge/etc/profile.d/conda.sh"
+		else
+			export PATH="/Users/dyj/mambaforge/bin:$PATH"
+		fi
+	fi
+	unset __conda_setup
+	# <<< conda initialize <<<
 elif [[ "$OSTYPE" =~ ^linux ]]; then
 	export PATH=/opt/tigervnc/usr/bin:$PATH
-	
+
 	# cuda setting
 	export PATH=/opt/cuda/bin:/usr/local/cuda/bin:$PATH
 	export LD_LIBRARY_PATH=/home/dyj/boost/lib:/opt/cuda/lib64:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
