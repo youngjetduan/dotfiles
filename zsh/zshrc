@@ -71,6 +71,8 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 	unset __conda_setup
 	# <<< conda initialize <<<
 elif [[ "$OSTYPE" =~ ^linux ]]; then
+	[ -z "$TMUX" ] && TERM=xterm-256color
+
 	export PATH=/opt/tigervnc/usr/bin:$PATH
 
 	# cuda setting
