@@ -27,4 +27,12 @@ alias la='ls -a'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias e='exit'
-alias cls='clear'
+alias cls=clear_history
+
+
+clear_history(){
+    clear
+    if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+        tmux clear-history
+    fi
+}
