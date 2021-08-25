@@ -54,6 +54,8 @@ zinit light romkatv/powerlevel10k
 
 # system path setting
 if [[ "$OSTYPE" =~ ^darwin ]]; then
+	[ -f ~/dotfiles/zsh/proxy.zsh ] && source ~/dotfiles/zsh/proxy.zsh
+	
     export PATH=/opt/homebrew/bin:$PATH
 
 	# >>> conda initialize >>>
