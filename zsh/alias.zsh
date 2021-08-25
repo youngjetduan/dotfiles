@@ -32,7 +32,7 @@ alias cls=clear_history
 
 clear_history(){
     clear
-    if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+    if [ "$TERM_PROGRAM" = "tmux" ]; then
         tmux clear-history
     fi
 }
