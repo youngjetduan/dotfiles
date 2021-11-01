@@ -42,6 +42,17 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
     ln -s $BASE_DIR/conda/condarc_linux $HOME/.condarc
 fi
 
+echo "配置pip"
+if [ ! -d $HOME/.pip ]; then
+    mkdir $HOME/.pip
+fi
+if [ -L $HOME/.pip/pip.conf ]; then
+    unlink $HOME/.pip/pip.conf
+elif [ -f $HOME/.pip/pip.conf ]; then
+    mv $HOME/.pip/pip.conf $HOME/.pip/pip.conf.bak
+fi
+ln -s $BASE_DIR/pip/pip.conf $HOME/.pip/pip.conf
+
 #建立p10k配置链接
 echo "配置p10k..."
 if [ -L $HOME/.p10k.zsh ];then

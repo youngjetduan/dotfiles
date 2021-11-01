@@ -98,5 +98,22 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
 	# <<< conda initialize <<<
 fi
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+# export BASE_PROMPT=$PS1
+# function updatePrompt {
+#  	if [[ "$(pyenv virtualenvs)" == *"* $(pyenv version-name) "* ]]; then
+# 		export PS1='($(pyenv version-name)) '$BASE_PROMPT
+# 	else
+# 		export PS1=$BASE_PROMPT
+# 	fi
+# }
+# export PROMPT_COMMAND='updatePrompt'
+
+
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/zsh/p10k.zsh.
 [[ ! -f ~/dotfiles/zsh/p10k.zsh ]] || source ~/dotfiles/zsh/p10k.zsh

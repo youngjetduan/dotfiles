@@ -7,6 +7,14 @@ alias ml='mamba list'
 alias ca='conda activate'
 alias cda='conda deactivate'
 
+alias pyvv='pyenv virtualenv'
+alias pyvs='pyenv virtualenvs'
+alias pya='pyenv activate'
+alias pyd='pyenv deactivate'
+
+alias git_mirror='git config --global url."https://hub.fastgit.org".insteadOf https://github.com'
+alias git_unset='git config --global --unset url.https://hub.fastgit.org.insteadof'
+
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     alias vnc16='autossh -M 20016 -fNL 30016:192.168.2.16:5993 jumper624'
     alias vnc23='autossh -M 20023 -fNL 30023:192.168.2.23:3389 jumper624'
