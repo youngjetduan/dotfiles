@@ -96,23 +96,27 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
 	fi
 	unset __conda_setup
 	# <<< conda initialize <<<
-fi
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-# export BASE_PROMPT=$PS1
-# function updatePrompt {
-#  	if [[ "$(pyenv virtualenvs)" == *"* $(pyenv version-name) "* ]]; then
-# 		export PS1='($(pyenv version-name)) '$BASE_PROMPT
-# 	else
-# 		export PS1=$BASE_PROMPT
-# 	fi
-# }
-# export PROMPT_COMMAND='updatePrompt'
+	# pyenv setting
+	if [[ ! -d $HOME/.pyenv ]]; then
+		print "installing pyenv"
+		command curl -L https://hub.fastgit.org/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+		print "pyenv installation done"
+	fi
+	export PYENV_ROOT="$HOME/.pyenv"
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	if [[ ! -d $PYENV_ROOT/plugins/pyenv-virtualenv ]]; then
+		print "installing pyenv-virtualenv plugin"
+		command git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv && \ 
+		print "installation done"
+	fi
+	if type pyenv >/dev/null 2>&1; then
+		eval "$(pyenv init --path)"
+		eval "$(pyenv init -)"
+		eval "$(pyenv virtualenv-init -)"
+	fi
+	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+fi
 
 
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/zsh/p10k.zsh.
