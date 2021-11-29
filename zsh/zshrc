@@ -56,22 +56,8 @@ zinit light romkatv/powerlevel10k
 if [[ "$OSTYPE" =~ ^darwin ]]; then
 	[ -f ~/dotfiles/zsh/proxy.zsh ] && source ~/dotfiles/zsh/proxy.zsh
 	
-    export PATH=/opt/homebrew/bin:$PATH
+        export PATH=/opt/homebrew/bin:$PATH
 
-	# >>> conda initialize >>>
-	# !! Contents within this block are managed by 'conda init' !!
-	__conda_setup="$('/Users/dyj/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-	if [ $? -eq 0 ]; then
-		eval "$__conda_setup"
-	else
-		if [ -f "/Users/dyj/mambaforge/etc/profile.d/conda.sh" ]; then
-			. "/Users/dyj/mambaforge/etc/profile.d/conda.sh"
-		else
-			export PATH="/Users/dyj/mambaforge/bin:$PATH"
-		fi
-	fi
-	unset __conda_setup
-	# <<< conda initialize <<<
 elif [[ "$OSTYPE" =~ ^linux ]]; then
 	[ -z "$TMUX" ] && TERM=xterm-256color
 
@@ -96,27 +82,27 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
 	fi
 	unset __conda_setup
 	# <<< conda initialize <<<
-
-	# pyenv setting
-	if [[ ! -d $HOME/.pyenv ]]; then
-		print "installing pyenv"
-		command curl -L https://hub.fastgit.org/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-		print "pyenv installation done"
-	fi
-	export PYENV_ROOT="$HOME/.pyenv"
-	export PATH="$PYENV_ROOT/bin:$PATH"
-	if [[ ! -d $PYENV_ROOT/plugins/pyenv-virtualenv ]]; then
-		print "installing pyenv-virtualenv plugin"
-		command git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv && \ 
-		print "installation done"
-	fi
-	if type pyenv >/dev/null 2>&1; then
-		eval "$(pyenv init --path)"
-		eval "$(pyenv init -)"
-		eval "$(pyenv virtualenv-init -)"
-	fi
-	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 fi
+
+# pyenv setting
+if [[ ! -d $HOME/.pyenv ]]; then
+        print "installing pyenv"
+        command curl -L https://hub.fastgit.org/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+        print "pyenv installation done"
+fi
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if [[ ! -d $PYENV_ROOT/plugins/pyenv-virtualenv ]]; then
+        print "installing pyenv-virtualenv plugin"
+        command git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv && \ 
+        print "installation done"
+fi
+if type pyenv >/dev/null 2>&1; then
+        eval "$(pyenv init --path)"
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
+fi
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/zsh/p10k.zsh.
