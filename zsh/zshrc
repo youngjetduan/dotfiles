@@ -15,7 +15,7 @@ if [ ! -f "$ZINIT" ]; then
 	echo "Installing zinit ..."
 	[ ! -d "$ZINIT_HOME" ] && mkdir -p "$ZINIT_HOME" 2> /dev/null
 	[ ! -d "$ZINIT_BIN_HOME" ] && mkdir -p "$ZINIT_BIN_HOME" 2> /dev/null
-	URL="https://github.com/zdharma/zinit.git"
+	URL="https://github.com/zdharma-continuum/zinit.git"
 	if [ -x "$(which git)" ]; then
 		git clone "$URL" "$ZINIT_BIN_HOME"
 	else
@@ -29,7 +29,7 @@ source "$ZINIT"
 
 # 
 zinit ice lucid wait='0' atinit='zpcompinit'
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit ice lucid wait='0' atload='_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
