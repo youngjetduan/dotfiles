@@ -1,0 +1,109 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Zinit: https://github.com/zdharma/zinit
+ZINIT_HOME="$HOME/.zinit"
+ZINIT_BIN_HOME="$ZINIT_HOME/bin"
+ZINIT="$ZINIT_BIN_HOME/zinit.zsh"
+
+# Install zinit.zsh if not exist
+if [ ! -f "$ZINIT" ]; then
+	echo "Installing zinit ..."
+	[ ! -d "$ZINIT_HOME" ] && mkdir -p "$ZINIT_HOME" 2> /dev/null
+	[ ! -d "$ZINIT_BIN_HOME" ] && mkdir -p "$ZINIT_BIN_HOME" 2> /dev/null
+	URL="https://github.com/zdharma-continuum/zinit.git"
+	if [ -x "$(which git)" ]; then
+		git clone "$URL" "$ZINIT_BIN_HOME"
+	else
+		echo "ERROR: please install git before installation !!"
+		exit
+	fi
+fi
+
+# Initialize antigen
+source "$ZINIT"
+
+# 
+zinit ice lucid wait='0' atinit='zpcompinit'
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit ice lucid wait='0' atload='_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice lucid wait='0'
+zinit light zsh-users/zsh-completions
+
+zinit snippet OMZ::lib/completion.zsh
+zinit snippet OMZ::lib/history.zsh
+zinit snippet OMZ::lib/git.zsh
+#zinit snippet OMZ::lib/pip.zsh
+zinit snippet OMZ::lib/key-bindings.zsh
+zinit snippet OMZ::lib/theme-and-appearance.zsh
+zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
+zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
+
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+
+# alias
+[ -f ~/dotfiles/zsh/alias.zsh ] && source ~/dotfiles/zsh/alias.zsh
+
+# system path setting
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+	[ -f ~/dotfiles/zsh/proxy.zsh ] && source ~/dotfiles/zsh/proxy.zsh
+	
+        export PATH=/opt/homebrew/bin:$PATH
+
+elif [[ "$OSTYPE" =~ ^linux ]]; then
+	[ -z "$TMUX" ] && TERM=xterm-256color
+
+	export PATH=/opt/tigervnc/usr/bin:$PATH
+	export PATH=$HOME/tigervnc/usr/bin:$PATH
+
+	# cuda setting
+	export PATH=/opt/cuda/bin:/usr/local/cuda/bin:$PATH
+	export LD_LIBRARY_PATH=/opt/cuda/lib64:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+	export LIBRARY_PATH=/opt/cuda/lib64:/usr/local/cuda/lib64:$LIBRARY_PATH
+
+	# >>> conda initialize >>>
+	# !! Contents within this block are managed by 'conda init' !!
+	__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+	else
+		if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+			. "$HOME/miniconda3/etc/profile.d/conda.sh"
+		else
+			export PATH="$HOME/miniconda3/bin:$PATH"
+		fi
+	fi
+	unset __conda_setup
+	# <<< conda initialize <<<
+fi
+
+# pyenv setting
+if [[ ! -d $HOME/.pyenv ]]; then
+        print "installing pyenv"
+        command curl -L https://hub.fastgit.org/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+        print "pyenv installation done"
+fi
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if [[ ! -d $PYENV_ROOT/plugins/pyenv-virtualenv ]]; then
+        print "installing pyenv-virtualenv plugin"
+        command git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv && \ 
+        print "installation done"
+fi
+if type pyenv >/dev/null 2>&1; then
+        eval "$(pyenv init --path)"
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
+fi
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+
+# To customize prompt, run `p10k configure` or edit ~/dotfiles/zsh/p10k.zsh.
+[[ ! -f ~/dotfiles/zsh/p10k.zsh ]] || source ~/dotfiles/zsh/p10k.zsh
