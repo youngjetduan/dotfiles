@@ -3,3 +3,5 @@
 	email = duanyj95@outlook.com
 [core]
 	editor = vim
+[url "https://gitclone.com/github.com"]
+	insteadOf = https://github.com

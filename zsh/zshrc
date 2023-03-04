@@ -87,7 +87,7 @@ fi
 # pyenv setting
 if [[ ! -d $HOME/.pyenv ]]; then
         print "installing pyenv"
-        command curl -L https://hub.fastgit.org/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+        command curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
         print "pyenv installation done"
 fi
 export PYENV_ROOT="$HOME/.pyenv"
