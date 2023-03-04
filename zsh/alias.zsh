@@ -12,14 +12,14 @@ alias pyvs='pyenv virtualenvs'
 alias pya='pyenv activate'
 alias pyd='pyenv deactivate'
 
-alias git_mirror='git config --global url."https://hub.fastgit.org".insteadOf https://github.com'
-alias git_unset='git config --global --unset url.https://hub.fastgit.org.insteadof'
-
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     alias vnc16='autossh -M 20016 -fNL 30016:192.168.2.16:5993 jumper624'
     alias vnc23='autossh -M 20023 -fNL 30023:192.168.2.23:3389 jumper624'
-    alias vnc27='autossh -M 20027 -fNL 30027:192.168.1.101:5993 jumper323'
-    alias vnc33='autossh -M 20033 -fNL 30033:192.168.1.106:5937 jumper323'
+    alias vnc27='autossh -M 20027 -fNL 30027:127.0.0.1:5991 med27'
+    alias vnc33='autossh -M 20033 -fNL 30033:192.168.2.144:5937 jumper624'
+    alias vncqd='autossh -M 20048 -fNL 30048:127.0.0.1:5993 qingd'
+    alias vncqd01='autossh -M 20041 -fNL 30041:127.0.0.1:5993 qingd01'
+    alias vnc157='autossh -M 20218 -fNL 30218:192.168.2.218:3389 jumper624'
 elif [[ "$OSTYPE" =~ ^linux ]]; then
     alias tb='tensorboard --logdir'
 fi
