@@ -59,7 +59,6 @@ alias git_mirror='git config --global url."https://gitclone.com/github.com".inst
 alias git_unset='git config --global --unset url.https://gitclone.com/github.com.insteadof'
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-    echo "is mac"
     alias proxy_on='export all_proxy=socks5://127.0.0.1:7890'
     alias proxy_off='unset all_proxy'
 fi
