@@ -28,25 +28,20 @@ fi
 source "$ZINIT"
 
 # 
-zinit ice lucid wait='0' atinit='zpcompinit'
-zinit light zdharma-continuum/fast-syntax-highlighting
-
 zinit ice lucid wait='0' atload='_zsh_autosuggest_start'
-zinit light zsh-users/zsh-autosuggestions
-
-zinit ice lucid wait='0'
 zinit light zsh-users/zsh-completions
 
-zinit snippet OMZL::completion.zsh
+zinit ice depth=1
+zinit light zdharma-continuum/fast-syntax-highlighting
+
 zinit snippet OMZL::history.zsh
 zinit snippet OMZL::git.zsh
-#zinit snippet OMZL::pip.zsh
 zinit snippet OMZL::key-bindings.zsh
 zinit snippet OMZL::theme-and-appearance.zsh
+zinit snippet OMZP::pip/pip.plugin.zsh
 zinit snippet OMZP::colored-man-pages/colored-man-pages.plugin.zsh
 zinit snippet OMZP::sudo/sudo.plugin.zsh
 
-zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
 # alias
