@@ -55,7 +55,7 @@ clear_history(){
 
 # proxy
 echo "set alias for proxy command"
-alias git_mirror='git config --global url."https://gitclone.com/github.com".insteadOf https://github.com'
+alias git_mirror='git config --global url."https://kgithub.com".insteadOf https://github.com'
 alias git_unset='git config --global --unset url.https://gitclone.com/github.com.insteadof'
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then
