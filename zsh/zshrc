@@ -15,7 +15,7 @@ if [ ! -f "$ZINIT" ]; then
 	echo "Installing zinit ..."
 	[ ! -d "$ZINIT_HOME" ] && mkdir -p "$ZINIT_HOME" 2> /dev/null
 	[ ! -d "$ZINIT_BIN_HOME" ] && mkdir -p "$ZINIT_BIN_HOME" 2> /dev/null
-	URL="https://github.com/zdharma-continuum/zinit.git"
+	URL="https://ghproxy.com/https://github.com/zdharma-continuum/zinit.git"
 	if [ -x "$(which git)" ]; then
 		git clone "$URL" "$ZINIT_BIN_HOME"
 	else
@@ -36,14 +36,17 @@ zinit light zsh-users/zsh-autosuggestions
 
 zinit ice depth=1
 
-zinit snippet OMZL::history.zsh
-zinit snippet OMZL::completion.zsh
-zinit snippet OMZL::git.zsh
-zinit snippet OMZL::key-bindings.zsh
-zinit snippet OMZL::theme-and-appearance.zsh
-zinit snippet OMZP::pip/pip.plugin.zsh
-zinit snippet OMZP::colored-man-pages/colored-man-pages.plugin.zsh
-zinit snippet OMZP::sudo/sudo.plugin.zsh
+MY_OMZ="https://ghproxy.com/http://github.com/ohmyzsh/ohmyzsh/raw/master"
+MY_OMZL=${MY_OMZ}/lib
+MY_OMZP=${MY_OMZ}/plugins
+zinit snippet ${MY_OMZL}/history.zsh
+zinit snippet ${MY_OMZL}/completion.zsh
+zinit snippet ${MY_OMZL}/git.zsh
+zinit snippet ${MY_OMZL}/key-bindings.zsh
+zinit snippet ${MY_OMZL}/theme-and-appearance.zsh
+zinit snippet ${MY_OMZP}/pip/pip.plugin.zsh
+zinit snippet ${MY_OMZP}/colored-man-pages/colored-man-pages.plugin.zsh
+zinit snippet ${MY_OMZP}/sudo/sudo.plugin.zsh
 
 zinit light romkatv/powerlevel10k
 
