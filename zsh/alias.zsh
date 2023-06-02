@@ -1,5 +1,5 @@
 # conda
-echo "set alias for conda command"
+# echo "set alias for conda command"
 alias ci='conda install'
 alias cs='conda search'
 alias cl='conda list'
@@ -10,14 +10,14 @@ alias ca='conda activate'
 alias cda='conda deactivate'
 
 # pyenv
-echo "set alias for pyenv command"
+# echo "set alias for pyenv command"
 alias pyvv='pyenv virtualenv'
 alias pyvs='pyenv virtualenvs'
 alias pya='pyenv activate'
 alias pyd='pyenv deactivate'
 
 # vnc
-echo "set alias for vnc command"
+# echo "set alias for vnc command"
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     alias vnc16='autossh -M 20016 -fNL 30016:192.168.2.16:5993 jumper624'
     alias vnc23='autossh -M 20023 -fNL 30023:192.168.2.23:3389 jumper624'
@@ -31,14 +31,14 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
 fi
 
 # tmux
-echo "set alias for tmux command"
+# echo "set alias for tmux command"
 alias tn='tmux new -s'
 alias ta='tmux a -t'
 alias tk='tmux kill-session -t'
 alias tl='tmux ls'
 
 # linux command
-echo "set alias for linux system command"
+# echo "set alias for linux system command"
 alias ll='ls -alF'
 alias la='ls -a'
 alias ..='cd ..'
@@ -54,7 +54,7 @@ clear_history(){
 }
 
 # proxy
-echo "set alias for proxy command"
+# echo "set alias for proxy command"
 alias git_mirror='git config --global url."https://ghproxy.com/https://github.com".insteadOf "https://github.com" && git config --global url."https://ghproxy.com/https://raw.githubusercontent.com".insteadOf "https://raw.githubusercontent.com"'
 alias git_unset='git config --global --unset url."https://ghproxy.com/https://github.com".insteadof && git config --global --unset url."https://ghproxy.com/https://raw.githubusercontent.com".insteadof'
 
