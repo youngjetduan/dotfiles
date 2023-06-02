@@ -36,7 +36,7 @@ zinit light zsh-users/zsh-autosuggestions
 
 zinit ice depth=1
 
-MY_OMZ="https://ghproxy.com/http://github.com/ohmyzsh/ohmyzsh/raw/master"
+MY_OMZ="https://ghproxy.com/http://github.com/ohmyzsh/ohmyzsh"
 MY_OMZL=${MY_OMZ}/lib
 MY_OMZP=${MY_OMZ}/plugins
 zinit snippet ${MY_OMZL}/history.zsh
