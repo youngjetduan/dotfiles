@@ -3,7 +3,3 @@
 	email = duanyj95@outlook.com
 [core]
 	editor = vim
-[url "https://ghproxy.com/https://github.com"]
-	insteadOf = https://github.com
-[url "https://ghproxy.com/https://raw.githubusercontent.com"]
-	insteadOf = https://raw.githubusercontent.com
