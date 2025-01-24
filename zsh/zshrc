@@ -15,7 +15,7 @@ if [ ! -f "$ZINIT" ]; then
 	echo "Installing zinit ..."
 	[ ! -d "$ZINIT_HOME" ] && mkdir -p "$ZINIT_HOME" 2> /dev/null
 	[ ! -d "$ZINIT_BIN_HOME" ] && mkdir -p "$ZINIT_BIN_HOME" 2> /dev/null
-	URL="https://ghproxy.com/https://github.com/zdharma-continuum/zinit.git"
+	URL="https://github.com/zdharma-continuum/zinit.git"
 	if [ -x "$(which git)" ]; then
 		git clone "$URL" "$ZINIT_BIN_HOME"
 	else
@@ -36,7 +36,7 @@ zinit light zsh-users/zsh-autosuggestions
 
 zinit ice depth=1
 
-MY_OMZ="https://ghproxy.com/https://github.com/ohmyzsh/ohmyzsh/blob/master"
+MY_OMZ="https://github.com/ohmyzsh/ohmyzsh/blob/master"
 MY_OMZL=${MY_OMZ}/lib
 MY_OMZP=${MY_OMZ}/plugins
 zinit snippet ${MY_OMZL}/history.zsh
@@ -105,4 +105,4 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/zsh/p10k.zsh.
-[[ ! -f ~/dotfiles/zsh/p10k.zsh ]] || source ~/dotfiles/zsh/p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
