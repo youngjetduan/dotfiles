@@ -50,9 +50,6 @@ zinit snippet ${MY_OMZP}/sudo/sudo.plugin.zsh
 
 zinit light romkatv/powerlevel10k
 
-# alias
-[ -f ~/dotfiles/zsh/alias.zsh ] && source ~/dotfiles/zsh/alias.zsh
-
 # system path setting
 if [[ "$OSTYPE" =~ ^darwin ]]; then
         export PATH=/opt/homebrew/bin:$PATH
@@ -75,8 +72,9 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
 	# <<< conda initialize <<<
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/dotfiles/zsh/p10k.zsh.
-[[ ! -f ~/.custom.zshrc ]] || source ~/.custom.zshrc
+# alias
+[ -f ~/dotfiles/zsh/alias.zsh ] && source ~/dotfiles/zsh/alias.zsh
+[ -f ~/dotfiles/zsh/custom.zsh ] && source ~/dotfiles/zsh/custom.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/zsh/p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
